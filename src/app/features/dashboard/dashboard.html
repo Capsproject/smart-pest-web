@@ -1,0 +1,90 @@
+<div class="min-h-screen" style="background-color: #f0f7f0;">
+
+  <!-- Navbar -->
+  <nav class="sticky top-0 z-10 px-6 py-4 flex items-center justify-between shadow-sm" style="background-color: #fafff8; border-bottom: 1px solid #b7e4c7;">
+    <div class="flex items-center gap-2">
+      <svg aria-hidden="true" width="28" height="28" viewBox="0 0 36 36" fill="none">
+        <path d="M18 3 C24 3 32 9 32 18 C32 27 25 33 18 33 C11 33 4 27 4 18 C4 9 12 3 18 3Z" fill="#52b788"/>
+        <path d="M18 3 C18 3 18 33 18 33" stroke="#fafff8" stroke-width="1.5"/>
+        <path d="M18 18 C18 18 8 12 4 18" stroke="#fafff8" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M18 18 C18 18 28 12 32 18" stroke="#fafff8" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      <span class="text-lg font-semibold" style="color: #2d6a4f;">SmartPest</span>
+      <span class="ml-2 text-xs px-2 py-0.5 rounded-full font-medium" style="background-color: #b7e4c7; color: #1b4332;">Dashboard</span>
+    </div>
+    <button
+      (click)="logout()"
+      class="flex items-center gap-1.5 text-sm px-4 py-2 rounded-xl transition-all duration-200 font-medium"
+      style="color: #52b788; border: 1px solid #b7e4c7;"
+    >
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+        <polyline points="16 17 21 12 16 7"/>
+        <line x1="21" y1="12" x2="9" y2="12"/>
+      </svg>
+      Sign out
+    </button>
+  </nav>
+
+  <main class="max-w-6xl mx-auto px-6 py-8">
+
+    <!-- Page header -->
+    <div class="mb-8">
+      <h1 class="text-2xl font-semibold mb-1" style="color: #1b4332;">Pest Activity Map</h1>
+      <p class="text-sm" style="color: #52b788;">Geographic heatmap of pest detection density across the Philippines</p>
+    </div>
+
+    <!-- Stat cards -->
+    <div class="grid grid-cols-3 gap-4 mb-8">
+      <div class="rounded-2xl p-5 shadow-sm" style="background-color: #fafff8; border: 1px solid #d8f3dc;">
+        <div class="flex items-center gap-2 mb-1">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#52b788" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+          </svg>
+          <span class="text-xs font-medium uppercase tracking-wide" style="color: #74c69d;">Total Detections</span>
+        </div>
+        <p class="text-3xl font-bold" style="color: #1b4332;">{{ totalDetections() }}</p>
+      </div>
+      <div class="rounded-2xl p-5 shadow-sm" style="background-color: #fafff8; border: 1px solid #d8f3dc;">
+        <div class="flex items-center gap-2 mb-1">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#52b788" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+          </svg>
+          <span class="text-xs font-medium uppercase tracking-wide" style="color: #74c69d;">Active Regions</span>
+        </div>
+        <p class="text-3xl font-bold" style="color: #1b4332;">{{ activeRegions() }}</p>
+      </div>
+      <div class="rounded-2xl p-5 shadow-sm" style="background-color: #fafff8; border: 1px solid #d8f3dc;">
+        <div class="flex items-center gap-2 mb-1">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#52b788" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+          </svg>
+          <span class="text-xs font-medium uppercase tracking-wide" style="color: #74c69d;">Top Hotspot</span>
+        </div>
+        <p class="text-3xl font-bold" style="color: #1b4332;">{{ hotspot() }}</p>
+      </div>
+    </div>
+
+    <!-- Map card -->
+    <div class="rounded-2xl shadow-sm overflow-hidden" style="background-color: #fafff8; border: 1px solid #d8f3dc;">
+      <div class="px-6 pt-5 pb-3 flex items-center justify-between">
+        <h2 class="text-base font-semibold" style="color: #1b4332;">Detection Heatmap</h2>
+        <!-- Legend -->
+        <div class="flex items-center gap-2">
+          <span class="text-xs" style="color: #95d5b2;">Low</span>
+          <div class="flex gap-0.5">
+            <div class="w-4 h-4 rounded-sm" style="background-color: #b7e4c7;"></div>
+            <div class="w-4 h-4 rounded-sm" style="background-color: #74c69d;"></div>
+            <div class="w-4 h-4 rounded-sm" style="background-color: #40916c;"></div>
+            <div class="w-4 h-4 rounded-sm" style="background-color: #2d6a4f;"></div>
+            <div class="w-4 h-4 rounded-sm" style="background-color: #1b4332;"></div>
+          </div>
+          <span class="text-xs" style="color: #95d5b2;">High</span>
+        </div>
+      </div>
+      <!-- Leaflet map container -->
+      <div #mapContainer style="height: 500px; width: 100%;" aria-label="Pest detection heatmap" role="img"></div>
+    </div>
+
+  </main>
+</div>
