@@ -1,0 +1,9 @@
+node_modules
+dist
+.angular
+.git
+.github
+.vscode
+.claude
+*.md
+npm-debug.log*
