@@ -1,0 +1,19 @@
+.leaf-float {
+  animation: leafFloat 6s ease-in-out infinite;
+}
+
+.leaf-float-delay {
+  animation: leafFloat 6s ease-in-out 2s infinite;
+}
+
+@keyframes leafFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(3deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .leaf-float,
+  .leaf-float-delay {
+    animation: none;
+  }
+}

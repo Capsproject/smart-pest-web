@@ -2,3 +2,16 @@
 
 @import "leaflet/dist/leaflet.css";
 @import "tailwindcss";
+
+@theme {
+  --color-brand-50: #f0f7f0;
+  --color-brand-100: #fafff8;
+  --color-brand-200: #d8f3dc;
+  --color-brand-300: #b7e4c7;
+  --color-brand-400: #95d5b2;
+  --color-brand-500: #74c69d;
+  --color-brand-600: #52b788;
+  --color-brand-700: #40916c;
+  --color-brand-800: #2d6a4f;
+  --color-brand-900: #1b4332;
+}
