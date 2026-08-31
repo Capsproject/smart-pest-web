@@ -5,7 +5,7 @@ on:
 
 jobs:
   test: 
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, coolify-internal]
     steps:
       - name: Show runner public IP
         run: curl https://api.ipify.org
