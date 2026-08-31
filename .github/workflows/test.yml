@@ -1,0 +1,12 @@
+name: Test Webhook
+on:
+  push:
+    branches: ["test"]
+
+jobs:
+  test: 
+    runs-on: ubuntu-latest
+    steps:
+      name: Test Webhook
+      run: |
+          curl -X GET '${{ secrets.COOLIFY_WEBHOOK }}' --header 'Authorization: Bearer ${{ secrets.COOLIFY_TOKEN }}'
