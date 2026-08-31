@@ -7,8 +7,6 @@ jobs:
   test: 
     runs-on: [self-hosted, coolify-internal]
     steps:
-      - name: Show runner public IP
-        run: curl https://api.ipify.org
-      # - name: Test Webhook
-      #   run: |
-      #     curl -X GET '${{ secrets.COOLIFY_WEBHOOK }}' --header 'Authorization: Bearer ${{ secrets.COOLIFY_TOKEN }}'
+      - name: Test Webhook
+        run: |
+          curl -X GET '${{ secrets.COOLIFY_WEBHOOK }}' --header 'Authorization: Bearer ${{ secrets.COOLIFY_TOKEN }}'
